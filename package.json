@@ -1,5 +1,5 @@
 {
- "name":"xsockets",
+ "name":"crossmania",
  "description":"the node module for doing cross-domain CRUD with the browser",
  "keywords": ["cross-domain", "cors", "crud", "browser", "cross-browser"],
  "version":"0.2.0",
