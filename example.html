@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>curly test</title>
+	<script src='http://192.168.2.184:9999/~/projects/js_modules'></script>
+	<script>
+		JSON = require('JSON');
+
+		var mania = require('crossmania').create('http://192.168.2.184:8000');
+		var $ = require('jQuery');
+
+		var log = function(err, str) {
+			$(function() {
+				if (err) {
+					$('pre').html(err.message).css('color', 'darkred').css('font-weight', 'bold');
+					return;
+				}
+
+				$('pre').html(JSON.stringify(str, null, '  ')).css('color', 'darkgreen').css('font-weight', 'normal');				
+			});
+		}
+
+		$(function() {
+			$('h1').text('you are using crossmania with ' + mania.type);		
+		});
+
+		mania.put('/').send('hello world', log);
+	</script>
+</head>
+<body><h1></h1><pre></pre></body>
+</html>
