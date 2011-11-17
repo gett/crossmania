@@ -7,7 +7,7 @@ talk crossdomain with your browser. it's available through npm:
 usage is simple:
 
 ``` js
-var mania = require('crossmania');
+var mania = require('crossmania'); // call .string() afterwards to talk raw strings
 
 mania.get('/', function(request, respond) {
 	respond({hello:'world'}); // yes we talk json
