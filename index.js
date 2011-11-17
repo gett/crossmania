@@ -56,7 +56,7 @@ exports.create = function(server, options) {
 	var onbodyroute = function(method) {
 		return function(pattern, callback) {
 			var invoke = function(request, data, jsonp, response) {
-				if (options.jsonp) {
+				if (json) {
 					data = (data && JSON.parse(data)) || {};
 				}
 				callback(request, data, responder(response, jsonp));
