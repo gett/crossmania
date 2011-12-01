@@ -56,10 +56,17 @@ exports.create = function(server, options) {
 	var onbodyroute = function(method) {
 		return function(pattern, callback) {
 			var invoke = function(request, data, jsonp, response) {
+				var respond = responder(response, jsonp);
+
 				if (json) {
-					data = (data && JSON.parse(data)) || {};
+					try {
+						data = (data && JSON.parse(data)) || {};					
+					} catch(err) {
+						respond(400, {error:'request MUST be valid JSON: '+err.message});
+						return;
+					}
 				}
-				callback(request, data, responder(response, jsonp));
+				callback(request, data, respond);
 			};
 			var onbodyrequest = function(request, response) {
 				buffoon.string(request, common.fork(noop, function(data) {
