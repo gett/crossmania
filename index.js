@@ -39,13 +39,13 @@ exports.create = function(server, options) {
 			}
 			if (jsonp) { // also validate the jsonp thingy
 				body = jsonp+'('+JSON.stringify(body)+');';
-				headers['content-type'] = 'text/javascript';
+				headers['content-type'] = 'text/javascript; charset=utf-8';
 				status = 200;
 			}
 			if (body) {
 				headers['content-length'] = Buffer.byteLength(body);			
 			}
-			headers['content-type'] = headers['content-type'] || type;
+			headers['content-type'] = headers['content-type'] || (type+'; charset=utf-8');
 			headers['access-control-allow-origin'] = '*';
 
 			response.writeHead(status, headers);
