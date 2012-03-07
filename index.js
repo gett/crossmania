@@ -47,6 +47,8 @@ exports.create = function(server, options) {
 			}
 			headers['content-type'] = headers['content-type'] || (type+'; charset=utf-8');
 			headers['access-control-allow-origin'] = '*';
+			headers['access-control-allow-methods'] = 'POST, GET, OPTIONS';
+			headers['access-control-allow-headers'] = 'Content-Type';
 
 			response.writeHead(status, headers);
 			response.end(body);
