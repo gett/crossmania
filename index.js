@@ -47,8 +47,6 @@ exports.create = function(server, options) {
 			}
 			headers['content-type'] = headers['content-type'] || (type+'; charset=utf-8');
 			headers['access-control-allow-origin'] = '*';
-			headers['access-control-allow-methods'] = 'POST, GET, OPTIONS';
-			headers['access-control-allow-headers'] = 'Content-Type';
 
 			response.writeHead(status, headers);
 			response.end(body);
@@ -120,8 +118,20 @@ exports.create = function(server, options) {
 		response.end();
 	});
 	server.get('/mania/proxy', function(request, response) {
-		response.writeHead(200, {'content-type':'text/html', 'content-length':PROXY.length});
+		response.writeHead(200, {
+			'content-type':'text/html',
+			'content-length':PROXY.length,
+			'access-control-allow-origin':'*'
+		});
 		response.end(PROXY);
+	});
+	server.get('/mania/ping', function(request, response) {
+		response.writeHead(200, {
+			'content-type':'text/plain',
+			'content-length':4,
+			'access-control-allow-origin':'*'
+		});
+		response.end('pong');
 	});
 
 	for (var method in server) {
