@@ -25,6 +25,9 @@ exports.create = function(server, options) {
 	};
 	var responder = function(response, jsonp) {
 		return function(status, headers, body) {
+			if (!response.writable) {
+				return;
+			}
 			if (typeof status !== 'number') {
 				body = status;
 				headers = {};
@@ -45,6 +48,7 @@ exports.create = function(server, options) {
 			if (body) {
 				headers['content-length'] = Buffer.byteLength(body);			
 			}
+			
 			headers['content-type'] = headers['content-type'] || (type+'; charset=utf-8');
 			headers['access-control-allow-origin'] = '*';
 
