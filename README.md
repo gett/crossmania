@@ -23,4 +23,4 @@ mania works by relying on `cors` based ajax if available (chrome, safari, firefo
 for IE8+ and Opera it uses an iframe proxy frame and the `postMessage` api.
 for IE7- and all others it falls back to an jsonp wrapper.  
 
-In the browser use the [crossmania](http://github.com/gett/crossmania-js) available for client-side javascript
+in the browser use the [browser.js](https://github.com/gett/crossmania/blob/master/browser.js) and a common.js compiler
