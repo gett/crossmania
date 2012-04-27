@@ -2,7 +2,7 @@
  "name":"crossmania",
  "description":"the node module for doing cross-domain CRUD with the browser",
  "keywords": ["cross-domain", "cors", "crud", "browser", "cross-browser"],
- "version":"0.2.8",
+ "version":"0.2.9",
  "homepage" : "https://github.com/gett/crossmania",
  "author": "Ge.tt <hello@ge.tt>",
  "contributors": [
